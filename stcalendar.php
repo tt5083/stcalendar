@@ -1,56 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<?php
+require 'sys_header.php';
+?>
 
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>日</th>
-                <th>一</th>
-                <th>二</th>
-                <th>三</th>
-                <th>四</th>
-                <th>五</th>
-                <th>六</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <?php
-            for ($i = 0; $i < $totalCells; $i++) {
-                // 開始新行
-                if ($i % 7 == 0 && $i != 0) {
-                    echo '</tr><tr>';
-                }
-                
-                // 輸出空白格子（上個月的日期）
-                if ($i < $firstDayOfWeek) {
-                    echo '<td class="other-month"></td>';
-                } 
-                // 輸出當月日期
-                else if ($i < $firstDayOfWeek + $daysInMonth) {
-                    $currentDay = $i - $firstDayOfWeek + 1;
-                    $isToday = ($currentDay == $day && $month == date('n') && $year == date('Y'));
-                    
-                    echo $isToday 
-                        ? '<td class="today">' . $currentDay . '</td>'
-                        : '<td>' . $currentDay . '</td>';
-                } 
-                // 輸出空白格子（下個月的日期）
-                else {
-                    echo '<td class="other-month"></td>';
-                }
-            }
-            ?>
-            </tr>
-        </tbody>
-    </table>
+    <?php
+// 設置時區
+date_default_timezone_set('Asia/Taipei');
+
+// 獲取當前月份和年份
+$month = date('m');
+$year = date('Y');
+
+// 獲取當前月份的第一天是星期幾
+$first_day = mktime(0, 0, 0, $month, 1, $year);
+$day_of_week = date('D', $first_day);
+
+// 獲取當前月份的天數
+$num_days = date('t', $first_day);
+
+// 創建月曆表格
+//動態加上class
+$class = "big-table";
+echo "<table border='1' class='$class'>";
+echo "<tr><th>星期日</th><th>星期一</th><th>星期二</th><th>星期三</th><th>星期四</th><th>星期五</th><th>星期六</th></tr>";
+
+// 填充月曆表格
+echo "<tr>";
+$day = 1;
+for ($i = 0; $i < 7; $i++) {
+    if ($day_of_week == date('D', strtotime("Sunday +{$i} days"))) {
+        break;
+    }
+    echo "<td></td>";
+}
+while ($day <= $num_days) {
+    if ($day_of_week == 'Sun') {
+        echo "</tr><tr>";
+    }
+    echo "<td>$day</td>";
+    $day++;
+    $day_of_week = date('D', strtotime("+1 day", strtotime($day_of_week)));
+}
+while ($day_of_week != 'Sun') {
+    echo "<td></td>";
+    $day_of_week = date('D', strtotime("+1 day", strtotime($day_of_week)));
+}
+echo "</tr>";
+
+// 結束月曆表格
+echo "</table>";
+?>
 </body>
 
 </html>
