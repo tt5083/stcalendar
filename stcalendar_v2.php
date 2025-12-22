@@ -3,11 +3,17 @@ require 'sys_header_v2.php';
 ?>
 
 <body>
-    <div style="width: 100%; text-align: center">
-        <a href="?year=<?php echo $prevYear; ?>&month=<?php echo $prevMonth; ?>">前一個月</a>
-        <!-- 顯示年份和月份 -->
-        <span><?php echo $year; ?>年 <?php echo $month; ?>月</span>
-        <a href="?year=<?php echo $nextYear; ?>&month=<?php echo $nextMonth; ?>">下一個月</a>
+    <div style="display: flex;">
+        <div style="text-align: left">
+            <a href="?year=<?php echo $prevYear; ?>&month=<?php echo $prevMonth; ?>"
+                style="text-decoration: none;">上一個月</a>
+            <a href="?year=<?php echo $nextYear; ?>&month=<?php echo $nextMonth; ?>"
+                style="text-decoration: none;">下一個月</a>
+        </div>
+        <div style="width: 90%; text-align: center">
+            <!-- 顯示年份和月份 -->
+            <span><?php echo $year; ?>年 <?php echo $month; ?>月</span>
+        </div>
     </div>
     <table class="big-table" ;>
         <tr>
