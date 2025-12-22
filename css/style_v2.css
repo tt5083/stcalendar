@@ -45,3 +45,27 @@
         }
 
         /* ==========  END  ============== */
+
+        /* 上下月及當天的框線 */
+        .bordered-link {
+            border: 1px solid #333;
+            /* 1px 寬、深灰色實線 */
+            padding: 8px 12px;
+            /* 上下 8px, 左右 12px 內距 */
+            text-decoration: none;
+            /* 移除底線 */
+            color: #007bff;
+            /* 連結文字顏色 */
+            display: inline-block;
+            /* 讓 padding 正常作用 */
+            border-radius: 5px;
+            /* 可選：圓角 */
+        }
+
+        .bordered-link:hover {
+            background-color: #e9ecef;
+            /* 鼠標懸停時的背景色 */
+            color: #0056b3;
+        }
+
+        /* END */

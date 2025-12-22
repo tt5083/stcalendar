@@ -16,6 +16,8 @@ $firstDayOfMonth = mktime(0, 0, 0, $month, 1, $year); // 取得這個月第一�
 $dayOfWeek = date('w', $firstDayOfMonth); // 第一天是星期幾
 $daysInMonth = date('t', $firstDayOfMonth); // 這個月總共有幾天
 $today = date('Y-m-d'); // 今天是幾號
+$toyear = date('Y'); // 今天幾年
+$tomonth = date('m'); // 今天幾月
 ?>
 <!DOCTYPE html>
 <html lang="zh-Hant">

@@ -3,18 +3,25 @@ require 'sys_header_v2.php';
 ?>
 
 <body>
-    <div style="display: flex;">
+    <?php
+    echo "測試" . $year;
+    echo $month;
+    ?>
+    <div style="display: flex;" class="big-table">
         <div style="text-align: left">
-            <a href="?year=<?php echo $prevYear; ?>&month=<?php echo $prevMonth; ?>"
-                style="text-decoration: none;">上一個月</a>
-            <a href="?year=<?php echo $nextYear; ?>&month=<?php echo $nextMonth; ?>"
-                style="text-decoration: none;">下一個月</a>
+            <a href="?year=<?php echo $prevYear; ?>&month=<?php echo $prevMonth; ?>" style="text-decoration: none;"
+                class="bordered-link">上一個月</a>
+            <a href="?year=<?php echo $nextYear; ?>&month=<?php echo $nextMonth; ?>" style="text-decoration: none;"
+                class="bordered-link">下一個月</a>
+            <a href="?year=<?php echo $toyear; ?>&month=<?php echo $tomonth; ?>" style="text-decoration: none;"
+                class="bordered-link">今天</a>
         </div>
-        <div style="width: 90%; text-align: center">
+        <div style="width: 85%; text-align: center">
             <!-- 顯示年份和月份 -->
-            <span><?php echo $year; ?>年 <?php echo $month; ?>月</span>
+            <span class="bordered-link"><?php echo $year; ?>年 <?php echo $month; ?>月</span>
         </div>
     </div>
+    <hr />
     <table class="big-table" ;>
         <tr>
             <th>日</th>
