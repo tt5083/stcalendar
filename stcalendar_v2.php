@@ -9,7 +9,7 @@ require 'sys_header_v2.php';
         <span><?php echo $year; ?>年 <?php echo $month; ?>月</span>
         <a href="?year=<?php echo $nextYear; ?>&month=<?php echo $nextMonth; ?>">下一個月</a>
     </div>
-    <table>
+    <table class="big-table" ;>
         <tr>
             <th>日</th>
             <th>一</th>
