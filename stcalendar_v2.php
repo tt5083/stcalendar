@@ -5,7 +5,7 @@ require 'sys_header_v2.php';
 <body>
     <?php
     echo "測試" . $year;
-    echo $month;
+    echo $month;$dayofWeek;
     ?>
     <div style="display: flex;" class="big-table">
         <div style="text-align: left">
@@ -16,13 +16,18 @@ require 'sys_header_v2.php';
             <a href="?year=<?php echo $toyear; ?>&month=<?php echo $tomonth; ?>" style="text-decoration: none;"
                 class="bordered-link">今天</a>
         </div>
-        <div style="width: 85%; text-align: center">
+        <div style="width: 80%; text-align: center">
             <!-- 顯示年份和月份 -->
             <span class="bordered-link"><?php echo $year; ?>年 <?php echo $month; ?>月</span>
         </div>
+        <div class="btn-group" role="group">
+            <button class="btn btn-info" onclick="window.location.href='api/stcalendar_v2_add_page_CL.php';"">
+                <i class=" bi bi-plus-circle"></i> 新增事項
+            </button>
+        </div>
     </div>
     <hr />
-    <table class="big-table" ;>
+    <table class="big-table" align="center" ;>
         <tr>
             <th>日</th>
             <th>一</th>

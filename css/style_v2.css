@@ -1,3 +1,4 @@
+        /* 行事曆主頁CSS */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -50,7 +51,7 @@
         .bordered-link {
             border: 1px solid #333;
             /* 1px 寬、深灰色實線 */
-            padding: 8px 12px;
+            padding: 8px 8px;
             /* 上下 8px, 左右 12px 內距 */
             text-decoration: none;
             /* 移除底線 */
