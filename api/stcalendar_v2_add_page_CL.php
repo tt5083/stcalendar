@@ -10,7 +10,7 @@
 
 <body>
     <h2 style="text-align: center;">活動資料填寫表</h2>
-    <form action="save.php" method="post">
+    <form action="links.php" method="post">
         <table class="form-table">
             <tr>
                 <td class="label-col">活動名稱</td>
