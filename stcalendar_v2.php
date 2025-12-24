@@ -59,5 +59,3 @@ require 'sys_header_v2.php';
         </tr>
     </table>
 </body>
-
-</html>

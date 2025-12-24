@@ -28,5 +28,6 @@ echo "</table>";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>測試行事曆</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
