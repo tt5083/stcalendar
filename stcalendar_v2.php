@@ -5,7 +5,8 @@ require 'sys_header_v2.php';
 <body>
     <?php
     echo "測試" . $year;
-    echo $month;$dayofWeek;
+    echo $month;
+    echo $dayofWeek;
     ?>
     <div style="display: flex;" class="big-table">
         <div style="text-align: left">

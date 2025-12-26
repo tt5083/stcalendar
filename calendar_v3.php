@@ -5,8 +5,16 @@ require 'sys_header_v2.php';
 
 <body>
     <?php
-    echo "測試" . $year;
-    echo $month;$dayofWeek;
+    echo "現在是：" . $year . "年";
+    ?>
+    <br>
+    <?php
+    echo "目前月份：" . $month;
+    ?>
+    <br>
+    <br>
+    <?php
+    echo $daysInMonth;
     ?>
     <div style="display: flex;" class="big-table">
         <div style="text-align: left">

@@ -25,6 +25,6 @@ $tomonth = date('m'); // 今天幾月
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>行事曆V2</title>
+    <title>行事曆V3</title>
     <link rel="stylesheet" type="text/css" href="css/style_v2.css">
 </head>

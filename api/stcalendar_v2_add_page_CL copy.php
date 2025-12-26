@@ -1,62 +1,3 @@
-<?php
-// --- 資料庫連線設定 ---
-$host = 'localhost';
-$db   = 'stcalendar';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-$pdo = new PDO($dsn, $user, $pass, $options);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_event'])) {
-
-    // 1️⃣ 取得並整理時間（關鍵）
-    $startRaw = $_POST['ca_even_st_time'] ?? '';
-    $endRaw   = $_POST['ca_even_end_time'] ?? '';
-
-    // datetime-local → MySQL DATETIME
-    $startTime = date('Y-m-d H:i:s', strtotime($startRaw));
-    $endTime   = date('Y-m-d H:i:s', strtotime($endRaw));
-
-    // 2️⃣ 從開始時間算 event_date
-    $eventDate = date('Y-m-d', strtotime($startTime));
-
-    // 3️⃣ INSERT（一定要包含 event_date）
-    $sql = "
-    INSERT INTO events (
-        ca_publisher, ca_local, event_date, ca_even_str_time, ca_even_end_time,
-        ca_applicant, ca_theme, ca_type, ca_lector, ca_note
-    ) VALUES (
-        :publisher, :local, :event_date, :start_time, :end_time,
-        :applicant, :theme, :type, :lector, :note
-    )
-";
-
-    $stmt = $pdo->prepare($sql);
-$stmt->execute([
-    ':publisher'   => $_POST['ca_publisher'] ?? '',
-    ':local'       => $_POST['location'] ?? '',
-    ':event_date'  => $eventDate,
-    ':start_time'  => $startTime,
-    ':end_time'    => $endTime,
-    ':applicant'   => $_POST['ca_applicant'] ?? '',
-    ':theme'       => $_POST['ca_even_name'] ?? '',
-    ':type'        => $_POST['ca_type'] ?? '',
-    ':lector'      => $_POST['ca_lecturer'] ?? '',
-    ':note'        => $_POST['ca_note'] ?? ''
-]);
-
-    header("Location: ../calendar_v3.php");
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
@@ -69,7 +10,7 @@ $stmt->execute([
 
 <body>
     <h2 style="text-align: center;">活動資料填寫表</h2>
-    <form method="post">
+    <form action="../connection/links.php" method="post" name="add_event">
         <table class=" form-table">
             <tr>
                 <td class="label-col">活動名稱</td>
@@ -110,11 +51,19 @@ $stmt->execute([
                 <td><input type="text" name="ca_publisher"></td>
             </tr>
             <tr>
+                <td class="label-col">發佈時間</td>
+                <td><input type="datetime-local" name="ca_ct_time"></td>
+            </tr>
+            <tr>
+                <td class="label-col">更新時間</td>
+                <td><input type="datetime-local" name="ca_up_time"></td>
+            </tr>
+            <tr>
                 <td class="abel-col">備註</td>
                 <td><textarea name="ca_note"></textarea></td>
             </tr>
         </table>
-        <button type="submit" class="submit-btn" name="add_event">儲存資料</button>
+        <button type="submit" class="submit-btn">儲存資料</button>
     </form>
 </body>
 

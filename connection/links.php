@@ -21,31 +21,4 @@ function db_connect()
 }
 
 ${D} = db_connect();
-
-// --- 處理 POST 請求 (新增、編輯、刪除) ---
-/* if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // 新增
-    if (isset($_POST['add_task']) && !empty(trim($_POST['title']))) {
-        $stmt = $pdo->prepare("INSERT INTO todos (title) VALUES (?)");
-        $stmt->execute([trim($_POST['title'])]);
-    }
-    // 刪除
-    if (isset($_POST['delete_id'])) {
-        $stmt = $pdo->prepare("DELETE FROM todos WHERE id = ?");
-        $stmt->execute([$_POST['delete_id']]);
-    }
-    // 編輯 (更新)
-    if (isset($_POST['update_task'])) {
-        $stmt = $pdo->prepare("UPDATE todos SET title = ? WHERE id = ?");
-        $stmt->execute([$_POST['title'], $_POST['id']]);
-    }
-    // 重新導向避免重複提交表單
-    header("Location: index.php");
-    exit;
-} */
-
-// 取得所有資料
-$stmt = $pdo->query("SELECT * FROM event ORDER BY ca_sn DESC");
-$todos = $stmt->fetchAll();
-
 ?>
