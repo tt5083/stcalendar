@@ -46,7 +46,7 @@ $stmt = $pdo->query("SELECT * FROM todos ORDER BY created_at DESC");
 $todos = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="">
 
 <head>
     <meta charset="UTF-8">
