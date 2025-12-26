@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$_POST['title'], $_POST['id']]);
     }
     // 重新導向避免重複提交表單
-    header("Location: test.php");
+    header("Location: todo.php");
     exit;
 }
 
