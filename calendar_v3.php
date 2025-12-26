@@ -3,6 +3,7 @@ require_once __DIR__ . "/connection/default.php";
 require 'sys_header_v2.php';
 /* === ① 撈本月所有事件（一次就好） === */
 $startDate = sprintf('%04d-%02d-01', $year, $month);
+/* 取得某月最後一天的結束時間 */
 $endDate   = date('Y-m-t', strtotime($startDate));
 
 $sql = "
